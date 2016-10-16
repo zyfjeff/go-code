@@ -1,0 +1,612 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"func",
+				"func main	func main {...} ʂ"
+			],
+			[
+				"fun",
+				"func main	func main {...} ʂ"
+			],
+			[
+				"prn",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"sp",
+				"Sprintf	string ƒ"
+			],
+			[
+				"s",
+				"String	string ƒ"
+			],
+			[
+				"wir",
+				"WriteString	n int, err error ƒ"
+			],
+			[
+				"wr",
+				"WriteString	n int, err error ƒ"
+			],
+			[
+				"ini",
+				"initialLen	int ν"
+			],
+			[
+				"see",
+				"SEEK_SET	 Ɩ"
+			],
+			[
+				"pritn",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"std",
+				"Stdout	*os.File ν"
+			],
+			[
+				"FA",
+				"Fatalln	 ƒ"
+			],
+			[
+				"new",
+				"NewReader	*bytes.Reader ƒ"
+			],
+			[
+				"fa",
+				"Fatalln	 ƒ"
+			],
+			[
+				"Fa",
+				"Fatalln	 ƒ"
+			],
+			[
+				"New",
+				"NewWriter	*tar.Writer ƒ"
+			],
+			[
+				"fucn",
+				"func main	func main {...} ʂ"
+			],
+			[
+				"w",
+				"WriteString	n int, err error ƒ"
+			],
+			[
+				"op",
+				"OpenFile	*os.File, error ƒ"
+			],
+			[
+				"fin",
+				"FindAll	[][]byte ƒ"
+			],
+			[
+				"va",
+				"validMovie	*regexp.Regexp ν"
+			],
+			[
+				"Fin",
+				"FindAll	[][]byte ƒ"
+			],
+			[
+				"ma",
+				"MatchString	bool ƒ"
+			],
+			[
+				"Fprint",
+				"Fprintln	n int, err error ƒ"
+			],
+			[
+				"imp",
+				"import	import (...) ʂ"
+			],
+			[
+				"main",
+				"main	main"
+			],
+			[
+				"for",
+				"format_string                  string                                   ν"
+			],
+			[
+				"print",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"fo",
+				"format_string	string ν"
+			],
+			[
+				"docu",
+				"document	string ν"
+			],
+			[
+				"doc",
+				"documents	[]string ν"
+			],
+			[
+				"do",
+				"documents	[]string ν"
+			],
+			[
+				"job",
+				"JobName	string ν"
+			],
+			[
+				"fro",
+				"FormatInt	string ƒ"
+			],
+			[
+				"me",
+				"mergefile_stream	*os.File ν"
+			],
+			[
+				"ke",
+				"keyvalues	[]KeyValue ν"
+			],
+			[
+				"re",
+				"reduceName	string ƒ"
+			],
+			[
+				"Ke",
+				"KeyValueSlice	struct ʈ"
+			],
+			[
+				"Key",
+				"KeyValue	struct ʈ"
+			],
+			[
+				"of",
+				"ofile_stream	 ν"
+			],
+			[
+				"cl",
+				"Close	error ƒ"
+			],
+			[
+				"ofil",
+				"ofile_stream	*os.File ν"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "archive.go",
+			"settings":
+			{
+				"buffer_size": 1060,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "switch.go",
+			"settings":
+			{
+				"buffer_size": 200,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test.go",
+			"settings":
+			{
+				"buffer_size": 475,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test2.go",
+			"settings":
+			{
+				"buffer_size": 240,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "map.go",
+			"settings":
+			{
+				"buffer_size": 1609,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 250.0,
+		"last_filter": "view",
+		"selected_items":
+		[
+			[
+				"view",
+				"View: Toggle Menu"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control:",
+				"Package Control: Add Repository"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:remo",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 471.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/jeff/code/go/project"
+	],
+	"file_history":
+	[
+		"/home/jeff/code/go/project/getmovie.go",
+		"/home/jeff/code/go/project/archive.go",
+		"/home/jeff/code/go/project/goconfig.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/worker.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_map.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_reduce.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_rpc.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master_rpc.go",
+		"/home/jeff/code/go/course/6.824/src/diskv/client.go",
+		"/home/jeff/dot/1.dot",
+		"/home/jeff/dot/abc.dot",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/test_test.go",
+		"/home/jeff/code/go/course/6.824/src/main/wc.go",
+		"/home/jeff/code/go/goexample/README.md",
+		"/home/jeff/note.md",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master_splitmerge.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/schedule.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/readme.go",
+		"/home/jeff/.config/sublime-text-3/Packages/C++11/messages/install.txt",
+		"/home/jeff/code/go/course/6.824/src/pbservice/test_test.go",
+		"/home/jeff/.config/sublime-text-3/Packages/GoSublime/9o.md",
+		"/home/jeff/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/GoSublime/CHANGELOG.md"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"readuceF"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "archive.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								840,
+								840
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "switch.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "test.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								415,
+								415
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "test2.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "map.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								231,
+								231
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1838.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o:///home/jeff/code/go/course/6.824/src/mapreduce":
+	{
+		"height": 120.0
+	},
+	"output.9o:///home/jeff/code/go/project":
+	{
+		"height": 162.0
+	},
+	"output.9o:///home/jeff/dot":
+	{
+		"height": 162.0
+	},
+	"output.CppYCM.2":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.godoc-output":
+	{
+		"height": 162.0
+	},
+	"output.gotools_syntax_errors":
+	{
+		"height": 162.0
+	},
+	"pinned_build_system": "Packages/GoSublime/GoSublime.sublime-build",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
