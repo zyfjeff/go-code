@@ -1,0 +1,337 @@
+6.824 2014 Lecture 3: GFS Case Study
+
+The Google File System
+Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung
+SOSP 2003
+
+
+1.设计的动机
+2.事物一致性兼具简单和性能
+3.好的并行IO性能
+专注于性能，容错，一致性
+
+Why are we reading this paper?
+  the file system for map/reduce
+  case study of handling storage failures
+    trading consistency for simplicity and performance
+    motivation for subsequent designs
+  good performance -- great parallel I/O performance
+  good systems paper -- details from apps all the way to network
+  all main themes of 6.824 show up in this paper
+    performance, fault-tolerance, consistency
+
+一致性的意思就是当数据被复制多分副本后，对于并发访问的正确性，一个程序执行了写操作，如何保证后续其他的应用可以读到刚刚写入的值。
+弱一致性: 读返回的是旧的数据，不是最近写入的数据
+强一致性: 总是返回的是最近写入的数据
+强一致性对于应用友好，但是对于性能却不友好
+
+What is consistency?
+  A correctness condition
+  Important when data is replicated and concurrently accessed by applications 
+    if an application performs a write, what will a later read observe?
+      what if the read is from a different application?
+  Weak consistency
+    read() may return stale data  --- not the result of the most recent write
+  Strong consistency
+    read() always returns the data from the most recent write()
+  General trade-off:
+    strong consistency is nice for application writers
+    strong consistency is bad for performance
+  Many correctness conditions (often called consistency models)
+
+
+一致性模型的历史，在强一致性模型和弱一致性模型之间的权衡，衍生出很多一致性的模型
+History of consistency models
+  Much independent development in architecture, systems, and database communities
+    Concurrent processors with private caches accessing a shared memory
+    Concurrent clients accessing a distributed file system
+    Concurrent transactions on distributed database
+  Many different models with different trade-offs
+    serializability
+    sequential consistency
+    linearizability
+    entry consistency
+    release consistency
+    ....
+  Today first peak; will show up in almost every paper we read this term
+
+理想的一致性模型:
+一个复制的文件看起来像是一个没有复制的文件系统，许多客户端范根相同机器上的同一个文件
+如果一个应用写，那么此后将会得到写入的值，如果有两个应用并发写同一个文件，那么会导致文件系统未定义的行为，文件的
+内容可能会错乱，如果是两个应用并发写同一个目录一个先另一个后。
+
+"Ideal" consistency model
+  A replicated files behaves like as a non-replicated file system
+    picture: many clients on the same machine accessing files on a single disk
+  If one application writes, later reads will observe that write
+  What if two application concurrently write to the same file
+    In file systems often undefined  --- file may have some mixed content
+  What if two application concurrently write to the same directory
+    One goes first, the other goes second
+
+不一致的源头:
+  并发
+  机器故障
+  网络分区，错误
+Sources of inconsistency
+  Concurrency
+  Machine failures
+  Network partitions
+
+Example from GFS paper:
+  primary is partitioned from backup B
+  client appends 1
+  primary sends 1 to itself and backup A
+  reports failure to client
+  meanwhile client 2 may backup B and observe old value
+
+很难实现正确的系统，客户端和服务器端需要通信，很多性能消耗。
+Why is the ideal difficult to achieve in a distributed file system
+  Protocols can become complex --- see next week
+    Difficult to implement system correctly
+  Protocols require communication between clients and servers
+    May cost performance
+
+GFS的设计这放弃了理想的是凶案，追求好的性能和简单的设计
+理想的方案会加剧应用开发的难度，在理想方案中应用很难去观察读取旧数据，重复append记录等问题。
+GFS的paper主要争论的点就是，一致性，容错，性能，简单的设计。
+
+GFS designers give up on ideal to get better performance and simpler design
+  Can make life of application developers harder
+    application observe behaviors that are non-observable in an ideal system
+    e.g., reading stale data
+    e.g., duplicate append records
+    But the data isn't your bank account, so maybe ok
+  Today's paper is an example of the struggle between:
+   consistency
+   fault-tolerance
+   performance
+   simplicity of design
+
+GFS的目标就是创建一个由千百台基于linux的物理机器组成的可以存储大量数据的共享的文件系统
+GFS goal
+  create a shared file system
+  hundreds or thousands of (commodity, Linux based) physical machines
+  to enable storing massive data sets
+
+What does GFS store?
+  authors don't actually say
+  guesses for 2003:
+    search indexes & databases
+    all the HTML files on the web
+    all the images on the web
+    ...
+
+Properties of files:
+  Multi-terabyte data sets
+  Many of the files are large
+  Authors suggest 1M files x 100 MB = 100 TB
+    but that was in 2003
+  Files are generally append only
+
+核心的挑战:
+1.大量机器失败是很平常的事件
+2.在大量并发读写的情况下高性能
+3.网络使用更加有效率
+Central challenge:
+  With so many machines failures are common
+    assume a machine fails once per year
+    w/ 1000 machines, ~3 will fail per day.
+  High-performance: many concurrent readers and writers
+    Map/Reduce jobs read and store final result in GFS
+    Note: *not* the temporary, intermediate files
+  Use network efficiently
+
+高层抽象的设计:
+目录，文件，名称，打开/读/写，不具备POSIX语义
+chunk大小64M，每一个chunk是一个普通的文件，没一个chunk会复制在三台不同的机器上.
+为什么是３副本?
+除了可用性外，三副本还提供了什么?，对热文件读的负载均衡。
+为什么不仅仅存一个拷贝，在RAID上?，相对整个机器容错，而不是storage 设备，并且RAID也不是普通设备
+为什么chunk这么大?为了可以把metadata全部保存在内存中，如果chunk小会导致过多的metadata。
+
+High-level design
+  Directories, files, names, open/read/write
+    But not POSIX
+  100s of Linux chunk servers with disks
+    store 64MB chunks (an ordinary Linux file for each chunk)
+    each chunk replicated on three servers
+    Q: why 3x replication?
+    Q: Besides availability of data, what does 3x replication give us?
+       load balancing for reads to hot files
+       affinity
+    Q: why not just store one copy of each file on a RAID'd disk?
+       RAID isn't commodity
+       Want fault-tolerance for whole machine; not just storage device
+    Q: why are the chunks so big?
+  GFS master server knows directory hierarchy
+    for dir, what files are in it
+    for file, knows chunk servers for each 64 MB
+    master keeps state in memory
+      64 bytes of metadata per each chunk
+    master has private recoverable database for metadata
+      master can recovery quickly from power failure
+    shadow masters that lag a little behind master
+      can be promoted to master
+
+基本操作:
+  客户端读: 发送文件名和offset到master，master回复包含这个chunk的服务器集合，客户端缓存地址信息，然后请求最近的chunk服务器
+  客户端写: 请求master存数据，master选择一个集合的chunk服务器，其中一个是主chunk，主chunk转发请求给其他chunk服务器
+Basic operation
+  client read:
+    send file name and offset to master
+    master replies with set of servers that have that chunk
+      clients cache that information for a little while
+    ask nearest chunk server
+  client write:
+    ask master where to store
+    maybe master chooses a new set of chunk servers if crossing 64 MB
+    one chunk server is primary
+    it chooses order of updates and forwards to two backups
+
+两个不同的容错方案: 一个是用于master，另一个是用于chunk server
+Two different fault-tolerance plans
+  One for master
+  One for chunk servers
+
+master容错:
+  单mastre，客户端经常和master交互，mastre处理所有的操作
+  持久化一些限制信息比如名称空间，文件到chunk的映射，　change日志扮演着关键角色。
+  通过限制log的大小，使得每次恢复的时候，可以很快恢复，这个过程叫做checkpoint。
+  chunk的位置信息通过请求chunk服务器来进行重建
+
+Master fault tolerance
+  Single master
+    Clients always talk to master
+    Master orders all operations
+  Stores limited information persistently
+    name spaces (directories)
+    file-to-chunk mappings
+  Log changes to these two in a log
+    log is replicated on several backups
+    clients operations that modify state return *after* recording changes in *logs*
+    logs play a central role in many systems we will read about
+    logs play a central role in labs
+  Limiting the size of the log
+    Make a checkpoint of the master state
+    Remove all operations from log from before checkpoint
+    Checkpoint is replicated to backups
+  Recovery
+    replay log starting from last checkpoint
+    chunk location information is recreated by asking chunk servers
+  Master is single point of failure
+    recovery is fast, because master state is small
+      so maybe unavailable for short time
+    shadow masters
+      lag behind master
+        they replay from the log that is replicated
+      can server read-only operations, but may return stale data
+    if master cannot recovery, master is started somewhere else
+    must be done with great care to avoid two masters
+  We will see schemes with stronger guarantees, but more complex
+    see next few lectures
+
+chunk服务器容错: 通过chunk租约保证的一次复制只有一个主chunk服务器，主chunk服务器决定了处理的顺序，客户端push数据到副本中，
+副本是按照链式返回。客户端发送写请求到主chunk服务器，主chunk服务器指定se number，然后在本地应用，接着转发请求到副本，等到
+收到了所有副本的ack后就响应客户端。如果有一个副本没有返回那么客户端就重试。
+
+Chunk fault tolerance
+  Master grants a chunk lease to one of the replicas
+    That replica is the primary chunk server
+  Primary determines orders operations
+  Clients pushes data to replicas
+    Replicas form a chain
+    Chain respects network topology
+    Allows fast replication
+  Client sends write request to primary
+    Primary assigns sequence number
+    Primary applies change locally
+    Primary forwards request to replicates
+    Primary responds to client after receiving acks from all replicas
+  If one replica doesn't respond, client retries
+  Master replicates chunks if number replicas drop below some number
+  Master rebalances replicas
+
+chunk的一致性:某些chunk可能会过期，通过版本号来删除旧的数据，在租约到期之前，增长chunk的版本，然后发送给主和备的chunk服务器
+Consistency of chunks
+  Some chunks may get out of date
+    they miss mutations
+  Detect stale data with chunk version number
+    before handing out a lease
+      increments chunk version number
+       sends it to primary and backup chunk servers
+    master and chunk servers store version persistently
+  Send version number also to client
+  Version number allows master and client to detect stale replicas
+
+并发写和追加: 客户端可能会并发往一个文件的相同区域写，结果就是导致写错乱，很少有应用或做这些。并发写在linux上也会导致结果错乱
+许多客户端可能想并发append，例如日志文件，GFS支持院子的并发append，主chunk服务器选择记录的offset进行append。然后发送给所有的
+副本，如无法连接副本就返回错误给客户端，客户端进行重试，如果重试成功，某些副本将会append两次。文件可能会存在空洞，也可能会
+跨chunk。
+
+Concurrent writes/appends
+  clients may write to the same region of file concurrently
+  the result is some mix of those writes--no guarantees
+    few applications do this anyway, so it is fine
+    concurrent writes on Unix can also result in a strange outcome
+  many client may want to append concurrently to, e.g., a log file
+    GFS support atomic, at-least-once append
+    the primary chunk server chooses the offset where to append a record
+    sends it to all replicas.
+    if it fails to contact a replica, the primary reports an error to client
+    client retries; if retry succeeds:
+      some replicas will have the append twice (the ones that succeeded)
+    the file may have a "hole" too
+      when GFS pads to chunk boundary, if an append would across chunk boundary
+
+一致性模型:对于目录操作需要是强一致性模型，master原子的执行员数据的改变，目录操作遵从理想的一致性模型，当master下线，只有影子master
+的时候只有只读操作，可能会返回旧的数据。对于chunk的操作是弱一致性模型，一个突变会导致chunk不一致，主chunk更新了chunk，但是副本更新失败
+导致副本的数据是过期的，客户端可能会读到过期的数据，当客户端刷新租约的时候，将会学习到新版本。作者认为若一致性模型对于app来说不是问题
+app大多数的时候仅仅是append-only的update，app可以使用uid来追加记录删除重复，app可以使用临时文件进行原子的重命名。
+
+
+Consistency model
+  Strong consistency for directory operations
+    Master performs changes to metadata atomically
+    Directory operations follow the "ideal"
+    But, when master is off-line, only shadow masters
+      Read-only operations only, which may return stale data
+  Weak consistency for chunk operations
+    A failed mutation leaves chunks inconsistent
+      The primary chunk server updated chunk
+      But then failed and the replicas are out of date
+    A client may read an not-up-to-date chunk
+    When client refreshes lease it will learn about new version #
+  Authors claims weak consistency is not a big problems for apps    
+    Most file updates are append-only updates
+      Application can use UID in append records to detect duplicates
+      Application may just read less data (but not stale data)
+    Application can use temporary files and atomic rename
+
+性能: 大量对文件读的需求，
+Performance (Figure 3)
+  huge aggregate throughput for read (3 copies, striping)
+    125 MB/sec in aggregate
+    Close to saturating network
+  writes to different files lower than possible maximum
+    authors blame their network stack
+    it causes delays in propagating chunks from one replica to next
+  concurrent appends to single file
+    limited by the server that stores last chunk
+
+Summary
+  Important FT techniques used by GFS
+    Logging & checkpointing
+    Primary-backup replication for chunks
+      but with consistencies
+    We will these in many other systems  
+  what works well in GFS?
+    huge sequential reads and writes
+    appends
+    huge throughput (3 copies, striping)
+    fault tolerance of data (3 copies)
+  what less well in GFS?
+    fault-tolerance of master
+    small files (master a bottleneck)
+    concurrent updates to same file from many clients (except appends)
+
