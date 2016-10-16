@@ -1,0 +1,586 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"print",
+				"Printf	n int, err error ƒ"
+			],
+			[
+				"cl",
+				"client	*rpc.Client ν"
+			],
+			[
+				"Di",
+				"DialHTTP	*rpc.Client, error ƒ"
+			],
+			[
+				"a",
+				"Arith	int ʈ"
+			],
+			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"spl",
+				"SplitN	[]string ƒ"
+			],
+			[
+				"std",
+				"Stdin	*os.File ν"
+			],
+			[
+				"read",
+				"ReadString	line string, err error ƒ"
+			],
+			[
+				"list",
+				"ListenTCP	*net.TCPListener, error ƒ"
+			],
+			[
+				"lis",
+				"Listener	interface ¡"
+			],
+			[
+				"re",
+				"Readdirnames	names []string, err error ƒ"
+			],
+			[
+				"FUN",
+				"func main	func main {...} ʂ"
+			],
+			[
+				"Std",
+				"StdEncoding	*base64.Encoding ν"
+			],
+			[
+				"st",
+				"String	string ƒ"
+			],
+			[
+				"enc",
+				"Encode	error ƒ"
+			],
+			[
+				"new",
+				"NewDecoder	*json.Decoder ƒ"
+			],
+			[
+				"dial",
+				"Dial	net.Conn, error ƒ"
+			],
+			[
+				"New",
+				"NewDecoder	*json.Decoder ƒ"
+			],
+			[
+				"func",
+				"func main	func main {...} ʂ"
+			],
+			[
+				"res",
+				"ResolveTCPAddr	*net.TCPAddr, error ƒ"
+			],
+			[
+				"check",
+				"checkError	 ƒ"
+			],
+			[
+				"dai",
+				"DialIP	*net.IPConn, error ƒ"
+			],
+			[
+				"byte",
+				"Bytes	[]byte ƒ"
+			],
+			[
+				"for",
+				"for	for - Yield"
+			],
+			[
+				"Res",
+				"ResolveTCPAddr	*net.TCPAddr, error ƒ"
+			],
+			[
+				"Lis",
+				"ListenTCP	*net.TCPListener, error ƒ"
+			],
+			[
+				"fro",
+				"FormatInt	string ƒ"
+			],
+			[
+				"me",
+				"mergefile_stream	*os.File ν"
+			],
+			[
+				"ke",
+				"keyvalues	[]KeyValue ν"
+			],
+			[
+				"Ke",
+				"KeyValueSlice	struct ʈ"
+			],
+			[
+				"Key",
+				"KeyValue	struct ʈ"
+			],
+			[
+				"of",
+				"ofile_stream	 ν"
+			],
+			[
+				"ofil",
+				"ofile_stream	*os.File ν"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "mask.go",
+			"settings":
+			{
+				"buffer_size": 704,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ftpserver.go",
+			"settings":
+			{
+				"buffer_size": 1347,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "package main\n\n//go的rpc可以基于HTTP,TCP,w\n//go rpc的一些限制\n// 函数必须是公有的，也就是首字符要大写\n// 至少有两个参数，第一个参数是一个指针指向客户端传递给服务器端的参数，第二个参数也是一个指针是指向服务器端返回给客户端的参数\n// 有一个返回值类型为os.Error\n\n// F(&T1,&T2) os.Error\n\nimport (\n	\"errors\"\n	\"fmt\"\n	\"net/http\"\n	\"net/rpc\"\n)\n\n//封装了参数和返回值\ntype Args struct {\n	A, B int\n}\n\ntype Quotient struct {\n	Quo, Rem int\n}\n\ntype Arith int\n\nfunc (t *Arith) Multiply(args *Args, reply *int) error {\n	*reply = args.A * args.B\n	return nil\n}\n\nfunc (t *Arith) Divide(args *Args, quo *Quotient) error {\n	if args.B == 0 {\n		return errors.New(\"divide by zero\")\n	}\n\n	quo.Quo = args.A / args.B\n	quo.Rem = args.A % args.B\n	return nil\n}\n\nfunc main() {\n	arith := new(Arith)\n	rpc.Register(arith)\n	rpc.HandleHTTP()\n	err := http.ListenAndServe(\":1234\", nil)\n	if err != nil {\n		fmt.Println(err.Error())\n	}\n}\n",
+			"file": "http_rpc.go",
+			"file_size": 999,
+			"file_write_time": 131150560395043333,
+			"settings":
+			{
+				"buffer_size": 786,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "http_rpclient.go",
+			"settings":
+			{
+				"buffer_size": 828,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ftpclient.go",
+			"settings":
+			{
+				"buffer_size": 2009,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"view",
+				"View: Toggle Menu"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control:",
+				"Package Control: Add Repository"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:remo",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 378.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/jeff/code/go/go-net"
+	],
+	"file_history":
+	[
+		"/home/jeff/code/go/go-net/asn_datetimeserver.go",
+		"/home/jeff/code/go/go-net/asn.go",
+		"/home/jeff/code/go/go-net/Ping.go",
+		"/home/jeff/code/go/go-net/IPGetHeadInfo.go",
+		"/home/jeff/code/go/go-net/ThreadedEchoServer.go",
+		"/home/jeff/code/go/go-net/SimpleEchoServer.go",
+		"/home/jeff/code/go/go-net/daytimeserver.go",
+		"/home/jeff/code/go/go-net/getheadinfo.go",
+		"/home/jeff/code/go/go-net/ip.go",
+		"/home/jeff/code/go/go-net/savejson.go",
+		"/home/jeff/code/go/go-net/json_echoclient.go",
+		"/home/jeff/code/go/go-net/json_echoserver.go",
+		"/home/jeff/code/go/go-net/loadjson.go",
+		"/home/jeff/code/go/go-net/ftpserver.go",
+		"/home/jeff/code/go/go-net/base64.go",
+		"/home/jeff/dot/1.dot",
+		"/home/jeff/dot/abc.dot",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_map.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/test_test.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_reduce.go",
+		"/home/jeff/code/go/course/6.824/src/main/wc.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/common_rpc.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/worker.go",
+		"/home/jeff/code/go/goexample/README.md",
+		"/home/jeff/note.md",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master_rpc.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/master_splitmerge.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/schedule.go",
+		"/home/jeff/code/go/course/6.824/src/mapreduce/readme.go",
+		"/home/jeff/.config/sublime-text-3/Packages/C++11/messages/install.txt",
+		"/home/jeff/code/go/course/6.824/src/diskv/client.go",
+		"/home/jeff/code/go/course/6.824/src/pbservice/test_test.go",
+		"/home/jeff/.config/sublime-text-3/Packages/GoSublime/9o.md",
+		"/home/jeff/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/User/CTags.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/jeff/.config/sublime-text-3/Packages/GoSublime/CHANGELOG.md"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"readuceF"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "mask.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ftpserver.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								635,
+								635
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1125.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "http_rpc.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "http_rpclient.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 828,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								211,
+								211
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "ftpclient.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1147,
+								1147
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1050.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o:///home/jeff/code/go/course/6.824/src/mapreduce":
+	{
+		"height": 120.0
+	},
+	"output.9o:///home/jeff/code/go/go-net":
+	{
+		"height": 162.0
+	},
+	"output.9o:///home/jeff/dot":
+	{
+		"height": 162.0
+	},
+	"output.CppYCM.2":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.gotools_syntax_errors":
+	{
+		"height": 162.0
+	},
+	"pinned_build_system": "Packages/GoSublime/GoSublime.sublime-build",
+	"project": "gonet.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
