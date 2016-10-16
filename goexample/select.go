@@ -1,0 +1,30 @@
+package main
+
+import "time"
+import "fmt"
+
+func main() {
+    c1 := make(chan string)
+    c2 := make(chan string)
+    fmt.Println(time.Second)
+    //两个协程，通过c1和c2通信
+    go func() {
+        time.Sleep(time.Second * 1)
+        c1 <- "one"
+    }()
+
+    go func() {
+        time.Sleep(time.Second * 2)
+        c2 <- "two"
+    }()
+
+    //select监控多个描述符
+    for i := 0;i < 2;i++ {
+        select {
+        case msg1 := <-c1:
+            fmt.Println("received",msg1)
+        case msg2 := <-c2:
+            fmt.Println("received",msg2)
+        }
+    }
+}
