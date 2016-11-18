@@ -1,0 +1,461 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mk",
+				"mkslice2\t[]int ƒ"
+			],
+			[
+				"Lo",
+				"LOG_LOCAL3\t Ɩ"
+			],
+			[
+				"func",
+				"func main\tfunc main {...} ʂ"
+			],
+			[
+				"i",
+				"i\t ν"
+			],
+			[
+				"main",
+				"func main\tfunc main {...} ʂ"
+			],
+			[
+				"New",
+				"NewTest\tchan int ƒ"
+			],
+			[
+				"Un",
+				"UnixNano\tint64 ƒ"
+			],
+			[
+				"No",
+				"Now\ttime.Time ƒ"
+			],
+			[
+				"MaxUin",
+				"MaxUint32\t Ɩ"
+			],
+			[
+				"test",
+				"testing\t package ρ"
+			],
+			[
+				"te",
+				"testing\t package ρ"
+			],
+			[
+				"p",
+				"Println\tn int, err error ƒ"
+			],
+			[
+				"print",
+				"Println\tn int, err error ƒ"
+			],
+			[
+				"F",
+				"Friday\t Ɩ"
+			],
+			[
+				"new",
+				"NewWriter\t*gzip.Writer ƒ"
+			],
+			[
+				"std",
+				"Stdout\t*os.File ν"
+			],
+			[
+				"Sdt",
+				"Stdin\t*os.File ν"
+			],
+			[
+				"han",
+				"HandleFunc\t ƒ"
+			],
+			[
+				"hand",
+				"handlerFunc\thttp.HandleFunc ν"
+			],
+			[
+				"pa",
+				"newPathResolver\t*pathResolver ƒ"
+			],
+			[
+				"fprint",
+				"Fprintf\tn int, err error ƒ"
+			],
+			[
+				"fpr",
+				"Fprintf\tn int, err error ƒ"
+			],
+			[
+				"re",
+				"Request\tstruct ʈ"
+			],
+			[
+				"fp",
+				"Fprintf\tn int, err error ƒ"
+			],
+			[
+				"respons",
+				"ResponseWriter\tinterface ¡"
+			],
+			[
+				"get",
+				"Getenv\tstring ƒ"
+			],
+			[
+				"imp",
+				"import\timport (...) ʂ"
+			],
+			[
+				"Print",
+				"Println\tn int, err error ƒ"
+			],
+			[
+				"Prin",
+				"Printf\tn int, err error ƒ"
+			],
+			[
+				"Fl",
+				"Flag\tstruct ʈ"
+			],
+			[
+				"vi",
+				"VisitAll\t ƒ"
+			],
+			[
+				"P",
+				"Printf\tn int, err error ƒ"
+			],
+			[
+				"boo",
+				"BoolVar\t ƒ"
+			],
+			[
+				"res",
+				"ResponseWriter\tinterface ¡"
+			],
+			[
+				"pr",
+				"Println\tn int, err error ƒ"
+			],
+			[
+				"mi",
+				"Millisecond\t Ɩ"
+			],
+			[
+				"Fprin",
+				"Fprintf\tn int, err error ƒ"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "package main\n\nimport (\n\t\"fmt\"\n)\n\ntype data struct {\n\tx int\n}\n\t\nfunc main() {\n\td := data{100}\n\tvar t interface{} = &d\n\tt.(*data).x = 200\n\tfmt.Println(t)\n}\n",
+			"file": "test_go.go",
+			"file_size": 153,
+			"file_write_time": 131236478680000000,
+			"settings":
+			{
+				"buffer_size": 154,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Golang Build/Go.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					""
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Test"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Install"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Cross-Compile (Interactive)"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/GoSublime/GoSublime.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Golang Build/Go.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 307.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/tianqian.zyf/code/golang/go-code",
+		"/Users/tianqian.zyf/code/golang/go-code/go-in-practice",
+		"/Users/tianqian.zyf/code/golang/go-code/go-in-practice/chapter1"
+	],
+	"file_history":
+	[
+		"/Users/tianqian.zyf/code/golang/go-code/test_go_test.go",
+		"/Users/tianqian.zyf/code/golang/go-code/json_config.go",
+		"/Users/tianqian.zyf/code/golang/go-code/manners_shutdown.go",
+		"/Users/tianqian.zyf/code/golang/go-code/multiple_handlers.go",
+		"/Users/tianqian.zyf/code/golang/go-code/path_handlers.go",
+		"/Users/tianqian.zyf/code/golang/go-code/g_task.go",
+		"/Users/tianqian.zyf/code/golang/go-code/老师，关于我的论文，我想简单和您沟通下，下面是我的一些想法:",
+		"/Users/tianqian.zyf/code/golang/go-code/anony_task.go",
+		"/Users/tianqian.zyf/code/golang/go-code/gzip_tools.go",
+		"/Users/tianqian.zyf/Library/Application Support/Sublime Text 3/Packages/GoSublime/GoSublime.sublime-settings",
+		"/Users/tianqian.zyf/code/golang/go-code/go_test.go",
+		"/Users/tianqian.zyf/code/golang/go-code/config.json",
+		"/Users/tianqian.zyf/code/golang/go-code/config.yaml",
+		"/Users/tianqian.zyf/code/golang/go-code/yaml_config.go",
+		"/Users/tianqian.zyf/code/golang/go-code/config.ini",
+		"/Users/tianqian.zyf/code/golang/go-code/ini_config.go",
+		"/Users/tianqian.zyf/code/golang/go-code/env_config.go",
+		"/Users/tianqian.zyf/code/golang/go-code/callback_shutdown.go",
+		"/Users/tianqian.zyf/code/golang/go-code/{",
+		"/Users/tianqian.zyf/code/golang/go-code/count_cli.go",
+		"/Users/tianqian.zyf/code/golang/go-code/ls.go",
+		"/Users/tianqian.zyf/code/golang/go-code/hello_cli.go",
+		"/Users/tianqian.zyf/code/golang/go-code/go-flags.go",
+		"/Users/tianqian.zyf/code/golang/go-code/flag_cli.go",
+		"/Users/tianqian.zyf/code/golang/go-code/inigo.go",
+		"/Users/tianqian.zyf/code/golang/go-code/gopath/src/github.com/urfave/cli/app.go",
+		"/Users/tianqian.zyf/code/golang/go-code/hello_test.go",
+		"/Users/tianqian.zyf/code/golang/go-code/hello.go",
+		"/Users/tianqian.zyf/code/golang/go-code/channel.go",
+		"/Users/tianqian.zyf/code/golang/go-code/http_get.go",
+		"/Users/tianqian.zyf/code/golang/go-code/web-server.go",
+		"/Users/tianqian.zyf/code/golang/go-code/buntdb/buntdb_test.go",
+		"/Users/tianqian.zyf/Library/Application Support/Sublime Text 3/Packages/GoSublime/USAGE.md",
+		"/Users/tianqian.zyf/doc/study.go",
+		"/Users/tianqian.zyf/doc/work/weekly/20161011.md",
+		"/Users/tianqian.zyf/doc/Item12.md",
+		"/Users/tianqian.zyf/Library/Application Support/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/Users/tianqian.zyf/AliDrive/README.md"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			")\n",
+			"100"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "test_go.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o:///Users/tianqian.zyf/code/golang/go-code":
+	{
+		"height": 100.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/GoSublime/GoSublime.sublime-build",
+	"project": "golang.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 387.0,
+		"last_filter": "ass",
+		"selected_items":
+		[
+			[
+				"ass",
+				"Benchmark_Set_Persist_Sequential_1"
+			]
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 199.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
